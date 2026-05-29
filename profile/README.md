@@ -37,18 +37,19 @@ Every capability in Gatewaze is a module, and a module is a self-contained mini-
 AI is built in, so you can ship AI features on your own infrastructure without a separate AI platform. Custom AI use cases are themselves just modules.
 
 - **One provider router**: OpenAI, Anthropic, and Google Gemini behind a single interface, with per-user and per-use-case credentials and model allow-lists.
-- **Bring your own agent**: author a [Goose](https://github.com/aaif-goose/goose) recipe locally and run it unchanged in production. Gatewaze runs the Goose CLI server-side, so there is no rewrite and no local-to-cloud translation. The recipe that works on your laptop is the one that runs in prod.
-- **MCP server library**: expose your platform to agents through bundled MCP servers, including platform data (events, speakers, sponsors, health), a whitelisted API proxy, and a headless browser (local Chromium or Browserbase).
+- **Bring your own agent**: author a [Goose](https://github.com/aaif-goose/goose) recipe locally and run it unchanged in production. Gatewaze runs Goose, Block's open-source agent runtime, as a server-side CLI, so there is no rewrite and no local-to-cloud translation. The recipe that works on your laptop is the one that runs in prod.
+- **MCP server library**: expose your platform to agents through bundled [Model Context Protocol](https://modelcontextprotocol.io) (MCP) servers, including platform data (events, speakers, sponsors, health), a whitelisted API proxy, and a headless browser (local Chromium or [Browserbase](https://www.browserbase.com)).
+- **Agent memory that compounds**: agents keep a durable, git-synced knowledge base based on [Andrej Karpathy's LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) design, distilling immutable raw sources into LLM-authored, cross-linked wiki pages with full-text and vector search.
 - **AI chat and custom use cases**: drop in a streamed chat widget, or build a module for any AI use case, such as an automated daily briefing, content triage, or attendee matching, each with its own credentials, tools, and budget.
 - **Governance and cost control**: encrypted credentials, model and tool allow-lists, a per-call usage ledger, and hard budget caps that keep AI spend predictable.
 
 ## Built for automation
 
-A headless browser for agents, a governed web-fetch API (quotas, domain rules, robots.txt, audit and billing), and a scraper system backed by a fetch service with eight swappable residential-proxy providers.
+A headless browser for agents, a governed web-fetch API (quotas, domain rules, robots.txt, audit and billing), and a scraper system backed by a fetch service built on [Scrapling](https://github.com/D4Vinci/Scrapling), with eight swappable residential-proxy providers.
 
 ## Own your whole stack
 
-Self-host everything, including the AI. Start in minutes with Docker Compose, then run it in production on Kubernetes with the bundled Helm chart. No SaaS lock-in, and no data leaves your cluster.
+Self-host everything, including the AI. Gatewaze runs on a stack you already know: [Supabase](https://supabase.com) for Postgres, Auth, Storage, and Edge Functions; [Redis](https://redis.io) with [BullMQ](https://bullmq.io) for background jobs and workers; and [Umami](https://umami.is) for first-party, self-hosted analytics. Start in minutes with Docker Compose, then run it in production on Kubernetes with the bundled Helm chart. No SaaS lock-in, and no data leaves your cluster.
 
 ## Getting Started
 
