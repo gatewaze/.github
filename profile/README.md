@@ -25,7 +25,7 @@ Gatewaze is a modular, open-source platform for managing communities and the peo
 ## Run AI in production — in-house
 
 - **One provider router** — OpenAI, Anthropic, and Google Gemini behind a single interface, with per-user and per-use-case credentials and model allow-lists.
-- **Bring your own agent** — author a [Goose](https://github.com/block/goose) recipe locally and run it *unchanged* in production. Gatewaze runs the Goose CLI server-side, so there's no rewrite, no serverless wrapper, and no local-to-cloud translation — the recipe that works on your laptop is the one that runs in prod.
+- **Bring your own agent** — author a [Goose](https://github.com/aaif-goose/goose) recipe locally and run it *unchanged* in production. Gatewaze runs the Goose CLI server-side, so there's no rewrite, no serverless wrapper, and no local-to-cloud translation — the recipe that works on your laptop is the one that runs in prod.
 - **MCP server library** — expose your platform to agents through bundled MCP servers: platform data (events, speakers, sponsors, health), a whitelisted API proxy, and a headless browser (local Chromium or Browserbase).
 - **AI chat & custom use cases** — drop in a streamed, multi-turn chat widget, or build your own AI surface (like an automated daily briefing) with its own credentials, tools, and budget.
 - **Governance & cost control** — encrypted credentials, per-use-case model/tool allow-lists, a per-call usage ledger, and hard budget caps so AI spend never runs away.
